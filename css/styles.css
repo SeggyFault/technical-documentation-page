@@ -18,10 +18,14 @@
   --fact-bg-color: #f6f9f9;
   --fact-border-color: #c8dada;
 
-  /*PADDING*/
-  --block-padding: 30px;
-  --main-doc-padding: 0 30px 10px;
-  --nav-padding: 20px;
+  /*SPACING*/
+  --spacing-0: 0px;
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 16px;
+  --spacing-4: 24px;
+  --spacing-5: 32px;
+  --spacing-6: 40px;
 }
 
 /*GENERAL*/
@@ -31,11 +35,12 @@
 
 body {
   font-family: "Source Code Pro", monospace;
+  font-size: 16px;
 }
 
 ul {
   list-style: none;
-  padding: 0;
+  padding: var(--spacing-0);
 }
 
 a {
@@ -53,11 +58,11 @@ code {
 
 .main-title,
 .nav-item {
-  padding-left: var(--nav-padding);
+  padding-left: var(--spacing-4);
 }
 
 .nav-item {
-  padding-bottom: var(--nav-padding);
+  padding-bottom: var(--spacing-4);
 }
 
 .nav-item a,
@@ -71,15 +76,20 @@ code {
   transition: 0.2s;
 }
 
+/*MAIN*/
 .main-doc {
-  padding: var(--main-doc-padding);
+  padding: var(--spacing-0) var(--spacing-5) var(--spacing-2);
+}
+
+.main-section {
+  margin-top: var(--spacing-6);
 }
 
 /*CODE PREVIEW*/
 .code-preview {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-column-gap: 10px;
+  grid-column-gap: var(--spacing-3);
 }
 
 .code-preview-item pre code {
@@ -93,10 +103,10 @@ code {
 
 pre code {
   background-color: var(--code-bg-color);
-  font-size: 16px;
+  font-size: inherit;
   color: var(--code-color);
   border: 1px solid var(--code-border-color);
-  padding: var(--block-padding);
+  padding: var(--spacing-5);
 }
 
 .selector,
@@ -126,30 +136,30 @@ pre code {
 .warning {
   background-color: var(--warning-bg-color);
   border: 1px solid var(--warning-border-color);
-  padding: var(--block-padding);
+  padding: var(--spacing-5);
 }
 
 /*FACT*/
 .fact {
   background-color: var(--fact-bg-color);
   border: 1px solid var(--fact-border-color);
-  padding: var(--block-padding);
+  padding: var(--spacing-5);
 }
 
 /*MEDIA QUERIES*/
 @media only screen and (min-device-width: 816px) {
   .navbar {
     display: fixed;
-    top: 0px;
-    left: 0px;
+    top: var(--spacing-0);
+    left: var(--spacing-0);
     width: 25%;
     height: 100%;
   }
 
   .main-doc {
     position: absolute;
-    top: 0;
-    right: 0;
+    top: var(--spacing-0);
+    right: var(--spacing-0);
     width: 75%;
     height: 100%;
   }
@@ -159,8 +169,8 @@ pre code {
   /*change layout*/
   #navbar {
     position: absolute;
-    top: 0px;
-    left: 0px;
+    top: var(--spacing-0);
+    left: var(--spacing-0);
     width: 100%;
     max-height: 550px;
     text-align: center;
