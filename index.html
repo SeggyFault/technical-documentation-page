@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Sass Documentation Page</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <nav id="navbar" class="navbar">
+            <header class="main-title">
+                <h1>Sass</h1>
+            </header>
+
+            <!--NAV-->
+            <main>
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Syntax">Syntax</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Style_Rules">Style Rules</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Variables">Variables</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Interpolation">Interpolation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#At-Rules">At-Rules</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Values">Values</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Operators">Operators</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Built-In_Modules">Built-In Modules</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Breaking_Changes">Breaking Changes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Command-Line_Interface">Command-Line Interface</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#JavaScript_API">JavaScript API</a>
+                    </li>
+                </ul>
+            </main>
+        </nav>
+        <main id="main-doc" class="main-doc">
+
+            <!--SYNTAX-->
+            <section id="Syntax" class="main-section">
+                <header>
+                    <h2>Syntax</h2>
+                </header>
+                <main>
+                    <p>Sass supports two different syntaxes. Each one can load the other, so it's up to you and your
+                        team which one to choose.</p>
+                    <h3>SCSS</h3>
+                    <p>
+                        The SCSS syntax uses the file extension .scss. With a few small exceptions, it’s a superset of
+                        CSS, which means essentially <strong>all valid CSS is valid SCSS as well.</strong> Because of
+                        its similarity to CSS, it’s the easiest syntax to get used to and the most popular.
+                    </p>
+                    <p>SCSS looks like this:</p>
+                    <div class="code-preview-large">
+                        <div class="code-preview-item-large">
+                            <pre>
+            <code>  <span class="mix">@mixin</span> <span class="property">button-base</span><span class="punctuation">() { </span>
+    <span class="mix">@include</span> typography(button)<span class="punctuation">;</span>
+    <span class="mix">@include</span> ripple-surface<span class="punctuation">;</span> 
+    <span class="mix">@include</span> ripple-radius-bounded<span class="punctuation">;</span> 
+
+    <span class="property">display</span><span class="punctuation">:</span> inline-flex<span class="punctuation">;</span>
+    <span class="property">position</span><span class="punctuation">:</span> relative<span class="punctuation">;</span>
+    <span class="property">height</span><span class="punctuation">:</span> $button-height<span class="punctuation">;</span>
+    <span class="property">border</span><span class="punctuation">:</span> none<span class="punctuation">;</span>
+    <span class="property">vertical-align</span><span class="punctuation">:</span> middle<span class="punctuation">;</span>
+
+    <span class="mix">&</span><span class="state">:hover</span> <span class="punctuation">{</span> <span class="property">cursor</span><span class="punctuation">:</span> pointer<span class="punctuation">;</span> <span class="punctuation">}</span>
+
+    <span class="mix">&</span><span class="state">:disabled</span> <span class="punctuation">{</span>
+      <span class="property">color</span><span class="punctuation">:</span> $mdc-button-disabled-ink-color<span class="punctuation">;</span>
+      <span class="property">cursor</span><span class="punctuation">:</span> default<span class="punctuation">;</span>
+      <span class="property">pointer-events</span><span class="punctuation">:</span> none<span class="punctuation">;</span>
+    <span class="punctuation">}</span>
+   <span class="punctuation">}</span>
+            </code>
+          </pre>
+                        </div>
+                    </div>
+                    <h3>The Indented Syntax</h3>
+                    <p>The indented syntax was Sass’s original syntax, and so it uses the file extension .sass. Because
+                        of this extension, it’s sometimes just called “Sass”. The indented syntax supports all the same
+                        features as SCSS, but it uses indentation instead of curly braces and semicolons to describe the
+                        format of the document.</p>
+                    <p>n general, any time you’d write curly braces in CSS or SCSS, you can just indent one level deeper
+                        in the indented syntax. And any time a line ends, that counts as a semicolon. There are also a
+                        few additional differences in the indented syntax that are noted throughout the reference.</p>
+                    <p>The indented syntax looks like this:</p>
+                    <div class="code-preview-large">
+                        <div class="code-preview-item-large">
+                            <pre>
+            <code>
+<span class="mix">@mixin</span> <span class="property">button-base</span><span class="punctuation">()</span>
+  <span class="mix">@include</span> typography(button)
+  <span class="mix">@include</span> ripple-surface
+  <span class="mix">@include</span> ripple-radius-bounded
+
+  <span class="property">display</span><span class="punctuation"></span>: inline-flex
+  <span class="property">position</span><span class="punctuation"></span>: relative
+  <span class="property">height</span><span class="punctuation">:</span> $button-height
+  <span class="property">border</span><span class="punctuation">:</span> none
+  <span class="property">vertical-align</span><span class="punctuation">:</span> middle
+
+  <span class="mix">&</span><span class="state">:hover</span>
+    <span class="property">cursor</span><span class="punctuation">:</span> pointer
+
+  <span class="mix">&</span><span class="state">:disabled</span>
+    <span class="property">color</span><span class="punctuation">:</span> $mdc-button-disabled-ink-color
+    <span class="property">cursor</span><span class="punctuation">:</span> default
+    <span class="property">pointer-events</span><span class="punctuation">:</span> none
+           </code>
+          </pre>
+                        </div>
+                    </div>
+                    <h3>More:</h3>
+                    <ul class="more">
+                        <li class="more-item">
+                            <a href="https://sass-lang.com/documentation/syntax/parsing">Parsing a Stylesheet</a>
+                        </li>
+                        <li class="more-item">
+                            <a href="https://sass-lang.com/documentation/syntax/structure">Structure of a Stylesheet</a>
+                        </li>
+                        <li class="more-item">
+                            <a href="https://sass-lang.com/documentation/syntax/comments">Comments</a>
+                        </li>
+                        <li class="more-item">
+                            <a href="https://sass-lang.com/documentation/syntax/special-functions">Special Functions</a>
+                        </li>
+                    </ul>
+                </main>
+            </section>
+
+            <!--STYLE RULES-->
+            <section id="Style_Rules" class="main-section">
+                <header>
+                    <h2>Style Rules</h2>
+                </header>
+                <main>
+                    <h3>Style Rules</h3>
+                    <p>Style rules are the foundation of Sass, just like they are for CSS. And they work the same way:
+                        you choose which elements to style with a selector, and declare properties that affect how those
+                        elements look.</p>
+                    <div class="code-preview">
+                        <div class="code-preview-item">
+                            <span>SCSS</span>
+                            <pre>
+                      <code>
+<span class="selector">.button</span> <span class="punctuation">{</span>
+  <span class="property">padding</span><span class="punctuation">:</span> 3px 10px<span class="punctuation">;</span>
+  <span class="property">font-size</span><span class="punctuation">:</span> 12px<span class="punctuation">;</span>
+  <span class="property">border-radius</span><span class="punctuation">:</span> 3px<span class="punctuation">;</span>
+  <span class="property">border</span><span class="punctuation">:</span> 1px solid #e1e4e8<span class="punctuation">;</span>
+<span class="punctuation">}</span>
+                      </code>
+                    </pre>
+                        </div>
+                        <div class="code-preview-item">
+                            <span>Sass</span>
+                            <pre>
+                    <code>
+<span class="selector">.button</span>
+  <span class="property">padding</span><span class="punctuation">:</span> 3px 10px
+  <span class="property">font-size</span><span class="punctuation">:</span> 12px
+  <span class="property">border-radius</span><span class="punctuation">:</span> 3px
+  <span class="property">border</span><span class="punctuation">:</span> 1px solid #e1e4e8
+                    </code>
+                  </pre>
+                        </div>
+                        <div class="code-preview-item">
+                            <span>CSS</span>
+                            <pre>
+                    <code>
+<span class="selector">.button</span> <span class="punctuation">{</span>
+  <span class="property">padding</span><span class="punctuation">:</span> 3px 10px<span class="punctuation">;</span>
+  <span class="property">font-size</span><span class="punctuation">:</span> 12px<span class="punctuation">;</span>
+  <span class="property">border-radius</span><span class="punctuation">:</span> 3px<span class="punctuation">;</span>
+  <span class="property">border</span><span class="punctuation">:</span> 1px solid #e1e4e8<span class="punctuation">;</span> 
+<span class="punctuation">}</span>
+                    </code>
+                  </pre>
+                        </div>
+                    </div>
+                    <h3>Nesting</h3>
+                    <p>But Sass wants to make your life easier. Rather than repeating the same selectors over and over
+                        again, you can write one style rules inside another. Sass will automatically combine the outer
+                        rule’s selector with the inner rule’s.</p>
+                    <p class="warning">Nested rules are super helpful, but they can also make it hard to visualize how
+                        much CSS you’re actually generating. The deeper you nest, the more bandwidth it takes to serve
+                        your CSS and the more work it takes the browser to render it. Keep those selectors shallow!
+                    </p>
+                    <h4>Selector Lists</h4>
+                    <p>Nested rules are clever about handling selector lists (that is, comma-separated selectors). Each
+                        complex selector (the ones between the commas) is nested separately, and then they’re combined
+                        back into a selector list.</p>
+                    <h4>Selector Combinators</h4>
+                    <p>You can nest selectors that use combinators as well. You can put the combinator at the end of the
+                        outer selector, at the beginning of the inner selector, or even all on its own in between the
+                        two.</p>
+                    <h4>Advanced Nesting</h4>
+                    <p>If you want to do more with your nested style rules than just combine them in order with the
+                        descendant combinator (that is, a plain space) separating them, Sass has your back. See the
+                        parent selector documentation for more details.</p>
+                    <h3>Interpolation</h3>
+                    <p>You can use interpolation to inject values from expressions like variables and function calls
+                        into your selectors. This is particularly useful when you’re writing mixins, since it allows you
+                        to create selectors from parameters your users pass in.</p>
+                    <p>You can combine interpolation with the parent selector &, the @at-root rule, and selector
+                        functions to wield some serious power when dynamically generating selectors. For more
+                        information, see the parent selector documentation.</p>
+                    <p class="fact">Sass only parses selectors after interpolation is resolved. This means you can
+                        safely use interpolation to generate any part of the selector without worrying that it won’t
+                        parse.
+                    </p>
+                    <h3>More:</h3>
+                    <ul class="more">
+                        <li class="more-item">
+                            <a href="https://sass-lang.com/documentation/style-rules/declarations">Property
+                                Declarations</a>
+                        </li>
+                        <li class="more-item">
+                            <a href="https://sass-lang.com/documentation/style-rules/parent-selector">Parent
+                                Selector</a>
+                        </li>
+                        <li class="more-item">
+                            <a href="https://sass-lang.com/documentation/style-rules/placeholder-selectors">Placeholder
+                                Selectors</a>
+                        </li>
+                    </ul>
+                </main>
+            </section>
+
+            <!--VARIABLES-->
+            <section id="Variables" class="main-section">
+                <header>
+                    <h2>Variables</h2>
+                </header>
+                <main>
+                    <p>Sass variables are simple: you assign a value to a name that begins with $, and then you can
+                        refer to that name instead of the value itself. But despite their simplicity, they're one of the
+                        most useful tools Sass brings to the table. Variables make it possible to reduce repetition, do
+                        complex math, configure libraries, and much more.</p>
+                </main>
+            </section>
+
+            <!--INTERPOLATION-->
+            <section id="Interpolation" class="main-section">
+                <header>
+                    <h2>Interpolation</h2>
+                </header>
+                <main>
+                    <p>Interpolation can be used almost anywhere in a Sass stylesheet to embed the result of a
+                        SassScript expression into a chunk of CSS.</p>
+                </main>
+            </section>
+
+            <!--AT-RULES-->
+            <section id="At-Rules" class="main-section">
+                <header>
+                    <h2>At-Rules</h2>
+                </header>
+                <main>
+                    <p>Much of Sass’s extra functionality comes in the form of new at-rules it adds on top of CSS.</p>
+                </main>
+            </section>
+
+            <!--VALUES-->
+            <section id="Values" class="main-section">
+                <header>
+                    <h2>Values</h2>
+                </header>
+                <main>
+                    <p>Sass supports a number of value types, most of which come straight from CSS. Every expression
+                        produces a value, variables hold values. Most value types come straight from CSS</p>
+                </main>
+            </section>
+
+            <!--OPERATORS-->
+            <section id="Operators" class="main-section">
+                <header>
+                    <h2>Operators</h2>
+                </header>
+                <main>
+                    <p>Sass supports a handful of useful operators for working with different values. These include the
+                        standard mathematical operators like + and *, as well as operators for various other types</p>
+                </main>
+            </section>
+
+            <!--BUIT-IN MODULES-->
+            <section id="Built-In_Modules" class="main-section">
+                <header>
+                    <h2>Built-In Modules</h2>
+                </header>
+                <main>
+                    <p>Sass provides many built-in modules which contain useful functions (and the occasional mixin).
+                        These modules can be loaded with the @use rule like any user-defined stylesheet, and their
+                        functions can be called like any other module member. All built-in module URLs begin with sass:
+                        to indicate that they're part of Sass itself.</p>
+                </main>
+            </section>
+
+            <!--BREAKING CHANGE-->
+            <section id="Breaking_Changes" class="main-section">
+                <header>
+                    <h2>Breaking Changes</h2>
+                </header>
+                <main>
+                    <p>New versions of Sass are as backwards-compatible as possible, but sometimes a breaking change is
+                        necessary. Sass needs to keep up with the evolving CSS specification, and old language design
+                        mistakes occasionally need to be fixed.</p>
+                </main>
+            </section>
+
+            <!--COMMAND-LINE INTERFACE-->
+            <section id="Command-Line_Interface" class="main-section">
+                <header>
+                    <h2>Command-Line Interface</h2>
+                </header>
+                <main>
+                    <p>Different implementations of Sass have different interfaces when using them from the command line
+                    </p>
+                </main>
+            </section>
+
+            <!--JAVASCRIPT API-->
+            <section id="JavaScript_API" class="main-section">
+                <header>
+                    <h2>JavaScript API</h2>
+                </header>
+                <main>
+                    <p>Both major Sass implementations support the same JavaScript API. Dart Sass is distributed as the
+                        pure-Javascript sass package, and LibSass is distributed as a native extension in the node-sass
+                        package.</p>
+                </main>
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>
